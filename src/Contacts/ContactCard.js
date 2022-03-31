@@ -1,15 +1,18 @@
+import AddContact from './AddContact';
 import './ContactCard.css';
 
-function ContactCard() {
+
+function ContactCard({ name, img, lastMessage, time }) {
   return (
-    <div className="ContactCard" class="container">
-      <ol class="list-group list-group-numbered">
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">Subheading</div>
-            Content for list item
+    <div className="ContactCard container">
+      <ol className="list-group">
+        <li className="list-group-item d-flex justify-content-between align-items-start">
+          <img src={img}></img>
+          <div className="ms-2 me-auto">
+            <div className="fw-bold">{name}</div>
+            <div>{lastMessage}</div>
           </div>
-          <span class="badge bg-primary rounded-pill">14</span>
+          <div className="position-absolute bottom-0 end-0" id='time'>{time}</div>
         </li>
       </ol>
     </div>

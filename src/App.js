@@ -1,20 +1,22 @@
 import './App.css';
-import ContactCard from './Contacts/ContactCard';
 import './Contacts/ContactCard.css';
+import ContactList from './Contacts/Contacts';
+import AddContact from './Contacts/AddContact';
 
 function App() {
   return (
-    <div className="App" class="container">
-      <div class="row" id="topStrip">
-        <div class="col">
-          <i class="bi bi-envelope-paper-heart-fill"></i>
+    <div className="App container">
+      <div className="row" id="topStrip">
+        <div className="col-4">
+          <i className="bi bi-envelope-paper-heart-fill"></i>
+          <i id='addButton' className="bi bi-person-plus"></i>
         </div>
       </div>
-      <div class="row">
-        <div class="col-4" >
-          <ContactCard />
+      <div className="row">
+        <div className="col-4" >
+          {ContactList}
         </div>
-        <div class="col">
+        <div className="col">
           current chat
         </div>
       </div>
