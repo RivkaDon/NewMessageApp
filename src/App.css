@@ -1,3 +1,14 @@
+.bi{
+  padding-top: 2pt;
+  padding-left: 6pt;
+  padding-right: 6pt;
+  padding-bottom: 2pt;
+  font-size: xx-large;
+}
+#topStrip{
+  float:none;
+  background-color: palevioletred;
+}
 .App {
   text-align: center;
 }
