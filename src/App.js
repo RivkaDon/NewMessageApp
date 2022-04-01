@@ -2,6 +2,7 @@ import './App.css';
 import './Contacts/ContactCard.css';
 import ContactList from './Contacts/Contacts';
 import AddContact from './Contacts/AddContact';
+import { useState } from 'react';
 
 function App() {
   return (
@@ -9,7 +10,10 @@ function App() {
       <div className="row" id="topStrip">
         <div className="col-4">
           <i className="bi bi-envelope-paper-heart-fill"></i>
-          <i id='addButton' className="bi bi-person-plus"></i>
+          <button type="button" id='addButton' className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i className="bi bi-person-plus"></i>
+          </button>
+          <AddContact />
         </div>
       </div>
       <div className="row">

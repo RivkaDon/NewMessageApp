@@ -1,24 +1,31 @@
+import { useRef } from "react";
+import ContactCard from "./ContactCard";
+import ContactList from "./Contacts";
 
 function AddContact() {
-    return (
-        <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+  // hook for storing the newly entered username 
+  const newUserName = useRef(null);
+  // function to push a new contact into the contact list
+  const addUserName = function(key){
+    ContactList.push(<ContactCard key={ContactList.length} name={newUserName.current.value} lastMessage="" time=""/>)
+  };
+  return (
+    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">Add new contact</h5>
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div className="modal-body">
+          <input ref={newUserName} type="text" className="form-control" placeholder="Contact's Identifier" aria-label="Username" aria-describedby="basic-addon1"></input>
+          </div>
+          <div className="modal-footer">
+          {/*button adds the username chosen on click and modal closes*/} 
+          <button onClick={addUserName} type="button" className="btn btn-primary" data-bs-dismiss="modal">Add contact</button>
           </div>
         </div>
       </div>
-    );
-  }
-  
-  export default AddContact;
+    </div>
+);}
+export default AddContact;

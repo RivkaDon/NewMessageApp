@@ -1,4 +1,3 @@
-import AddContact from './AddContact';
 import './ContactCard.css';
 
 
