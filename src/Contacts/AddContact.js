@@ -1,12 +1,13 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ContactCard from "./ContactCard";
-import ContactList from "./Contacts";
+import ContactList from "./ContactList";
 
 function AddContact() {
+  const [newContactList, setContactList] = useState(ContactList);
   // hook for storing the newly entered username 
   const newUserName = useRef(null);
   // function to push a new contact into the contact list
-  const addUserName = function(key){
+  const addUserName = function(){
     ContactList.push(<ContactCard key={ContactList.length} name={newUserName.current.value} lastMessage="" time=""/>)
   };
   return (
