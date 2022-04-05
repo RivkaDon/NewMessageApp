@@ -1,9 +1,10 @@
+import OpenChat from '../Chats/ChatCard';
 import './ContactCard.css';
 
 
 function ContactCard({ name, img, lastMessage, time }) {
   return (
-    <div className="ContactCard container">
+    <div className="ContactCard container" onClick={()=>OpenChat({name,lastMessage})}>
       <ol className="list-group">
         <li className="list-group-item d-flex justify-content-between align-items-start">
           <img src={img}></img>
