@@ -1,0 +1,71 @@
+.bi{
+    padding: 7pt;
+    font-size: xx-large;
+  }
+  #background{
+    display: flex;
+    flex-direction: column;
+    padding: 0%;
+    margin: 0%;
+    height:100%;
+    background-position: center center;
+    width: 100%;
+  }
+  #bottomChat{
+    padding: 0%;
+    margin: 0%;
+    margin-bottom: 5pt;
+    bottom: 0%;
+    width: 100%;
+    margin-top: auto;
+  }
+  #topStrip{
+    padding: 0%;
+    margin: 0%;
+    background-position: center center;
+    background-color: palevioletred;
+    width: 100%;
+  }
+  #addButton{
+    float: right;
+    font-size: x-large;
+  }
+  .App {
+    text-align: left;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
