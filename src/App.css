@@ -1,5 +1,20 @@
+.bi{
+  padding-top: 2pt;
+  padding-left: 6pt;
+  padding-right: 6pt;
+  padding-bottom: 2pt;
+  font-size: xx-large;
+}
+#topStrip{
+  float:none;
+  background-color: palevioletred;
+}
+#addButton{
+  float: right;
+  font-size: x-large;
+}
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
