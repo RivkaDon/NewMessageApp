@@ -1,4 +1,3 @@
-
 import OpenChat from '../Chats/ChatCard';
 import './ContactCard.css';
 
