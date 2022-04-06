@@ -1,3 +1,4 @@
+import './ChatPage.css'
 import './Contacts/ContactCard.css';
 import ContactList from './Contacts/ContactList';
 import { useRef, useState } from 'react';
@@ -40,10 +41,10 @@ function ChatPage() {
                     </div>
                 </div>
             </div>
-            <div className="row">
-                <div className="col-4" >
+            <div className="row">  
+            <div className="col-4" >
                     {ContactList}
-                </div>
+                </div>  
                 <div className="col" id="currentChat"></div>
             </div>
         </div>
