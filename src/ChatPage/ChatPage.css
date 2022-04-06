@@ -1,0 +1,34 @@
+#currentChat{
+    height: 100%;
+    
+}
+.bi{
+    padding: 7pt;
+    font-size: xx-large;
+  }
+  #background{
+    padding: 0%;
+    margin: 0%;
+    height:100%;
+    width: 65%;
+    background-image: url(./Chats/chatWallpaper2.jpg);
+    position:absolute;
+  }
+  #bottomChat{
+    margin: 0%;
+    width: 100%;
+    position:absolute;
+    bottom: 15%;
+  }
+  #topStrip{
+    padding: 0%;
+    margin: 0%;
+    background-position: center center;
+    background-color: palevioletred;
+    width: 100%;
+    display: block;
+  }
+  #addButton{
+    float: right;
+    font-size: x-large;
+  }

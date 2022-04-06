@@ -1,0 +1,15 @@
+.container{
+    float: left;
+    padding: 1pt;
+    max-width:none;
+}
+.list-group-item{
+    padding: 0.5rem 0.5rem;
+}
+img{
+    height: 40pt;
+    width: 38pt;
+}
+#time{
+    font-size: small;
+}
