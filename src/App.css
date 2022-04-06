@@ -1,3 +1,36 @@
+.bi{
+  padding: 7pt;
+  font-size: xx-large;
+}
+#background{
+  display: flex;
+  flex-direction: column;
+  padding: 0%;
+  margin: 0%;
+  height:240%;
+  background-image: url(Chats/chatWallpaper2.jpg);
+  background-position: center center;
+  width: 100%;
+}
+#bottomChat{
+  padding: 0%;
+  margin: 0%;
+  margin-bottom: 5pt;
+  bottom: 0%;
+  width: 100%;
+  margin-top: auto;
+}
+#topStrip{
+  padding: 0%;
+  margin: 0%;
+  background-position: center center;
+  background-color: palevioletred;
+  width: 100%;
+}
+#addButton{
+  float: right;
+  font-size: x-large;
+}
 .App {
   text-align: left;
 }
