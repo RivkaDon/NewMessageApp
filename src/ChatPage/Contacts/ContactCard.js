@@ -1,5 +1,7 @@
 import OpenChat from '../Chats/ChatCard';
 import './ContactCard.css';
+
+
 function ContactCard({ name, img, lastMessage, time }) {
   return (
     <div className="container" onClick={()=>OpenChat({name,lastMessage})}>
@@ -16,4 +18,5 @@ function ContactCard({ name, img, lastMessage, time }) {
     </div>
   );
 }
+
 export default ContactCard;
