@@ -1,4 +1,4 @@
-import OpenChat from '../Chats/ChatCard';
+import OpenChat from '../ChatPage/Chats/ChatCard';
 import './ContactCard.css';
 
 
