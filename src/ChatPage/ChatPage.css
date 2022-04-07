@@ -1,9 +1,7 @@
 #currentChat{
-    height: 100%;
-    
+    height: 100%;    
 }
 .bi{
-    padding: 7pt;
     font-size: xx-large;
   }
   #background{
@@ -14,21 +12,27 @@
     background-image: url(./chatWallpaper2.jpg);
     position:absolute;
   }
-  #bottomChat{
-    margin: 0%;
-    width: 100%;
+  .myButton{
     position:absolute;
     bottom: 15%;
   }
-  #topStrip{
-    padding: 0%;
+  #bottomChat{
     margin: 0%;
-    background-position: center center;
+    width: 86%;
+    position:absolute;
+    bottom: 15%;
+    left: 7.5%;
+  }
+  #sendButton{
+    right: 0%;
+  }
+  #attachButton{
+    left: 0%;
+  }
+  #topStrip{
     background-color: palevioletred;
-    width: 100%;
-    display: block;
   }
   #addButton{
-    float: right;
     font-size: x-large;
+    float: right;
   }

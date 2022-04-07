@@ -1,3 +1,4 @@
+
 import OpenChat from '../Chats/ChatCard.js'
 import './ContactCard.css';
 
