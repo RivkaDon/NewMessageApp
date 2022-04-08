@@ -1,11 +1,26 @@
 import { useRef } from "react";
+import HarryPmesseges from "../Messages/HarryPmessages";
 
-function OpenChat({ name, lastMessage }) {
+function OpenChat({ name, lastMessages }) {
+    const sendMessage = function(){
+        const lineBreak = document.createElement('br');
+        document.getElementById("background").append(document.getElementById("bottomChat").value);
+        document.getElementById("background").appendChild(lineBreak);
+        
+        lastMessages.push(document.getElementById("bottomChat").value);
+        document.getElementById("bottomChat").value='';
+    }
     document.getElementById("nameOfChatContact").innerHTML = name;
     document.getElementById("currentChat").innerHTML
-        = ('<div id="background">' + lastMessage +
+        = ('<div id="background">'+
             '<button id="attachButton"></button><input id="bottomChat"></input>'
             + '<button id="sendButton"></button></div>');
+    //load all previous messeges
+    const lineBreak = document.createElement('br');
+    lastMessages.forEach(element =>{document.getElementById("background").append(element);
+    const lineBreak = document.createElement('br');
+    document.getElementById("background").appendChild(lineBreak);
+    });
     // attach button
     const attach = document.createElement("button");
     attach.addEventListener("click", () => console.log("hello"));
@@ -21,7 +36,7 @@ function OpenChat({ name, lastMessage }) {
     input.className = "css-class-name"; 
     // send button
     const send = document.createElement("button");
-    send.addEventListener("click", () => {console.log(document.getElementById("bottomChat").value);document.getElementById("bottomChat").value='';});
+    send.addEventListener("click", sendMessage);
     send.innerText = "Send";
     send.setAttribute("id", "sendButton");
     send.setAttribute("class", "myButton");

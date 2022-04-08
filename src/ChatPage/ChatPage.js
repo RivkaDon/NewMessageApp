@@ -10,7 +10,8 @@ function ChatPage() {
     const newUserName = useRef(null);
     // function to push a new contact into the contact list
     const SubmitNewContact = function () {
-        addUserName(ContactList.push(<ContactCard key={ContactList.length} name={newUserName.current.value} lastMessage="" time="" />));
+        let myArray = [];
+        addUserName(ContactList.push(<ContactCard key={ContactList.length} name={newUserName.current.value} lastMessages={myArray} time="" />));
         newUserName.current.value='';
     } 
     return (
