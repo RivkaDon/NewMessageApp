@@ -1,0 +1,22 @@
+.signup{
+    padding: 1%;
+}
+
+.container{
+
+    padding: 2%;
+    border-color: blue;
+    border-width: 10px;
+    border-style: solid;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-right: 20%;
+
+    background-color: green;
+    width: 50%;
+    left: 20%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 5%;
+    
+}
