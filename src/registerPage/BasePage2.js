@@ -44,7 +44,7 @@ function BasePage2() {
       {(isCorrect) ?
         (<Navigate to="/chat" />) :
         (
-          <div className="container">
+          <div className="container" id='signInContainer'>
             <form>
               <div className="row mb-3 needs-validation">
                 <label htmlFor="inputUsername3" className="col-sm-2 col-form-label">Username</label>
