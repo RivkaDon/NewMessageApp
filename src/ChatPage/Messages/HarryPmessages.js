@@ -1,2 +1,2 @@
-const HarryPmesseges = ['hey','how are you?','magical'];
+const HarryPmesseges = [[1,'hey'],[0,'how are you?'],[1,'magical']];
 export default HarryPmesseges; 

@@ -1,2 +1,2 @@
-const QueenGmesseges = ['Greetings','Are you well?','come for tea?'];
+const QueenGmesseges = [[1,'Greetings'],[1,'Are you well?'],[0,'come for tea?']];
 export default QueenGmesseges; 

@@ -3,6 +3,7 @@ import './Contacts/ContactCard.css';
 import ContactList from './Contacts/ContactList';
 import { useRef, useState } from 'react';
 import ContactCard from './Contacts/ContactCard';
+import React from 'react';
 function ChatPage() {
     // hook for reloading all the contacts after adding a contact
     const [NewContactList, addUserName] = useState(ContactList);
@@ -10,7 +11,7 @@ function ChatPage() {
     const newUserName = useRef(null);
     // function to push a new contact into the contact list
     const SubmitNewContact = function () {
-        let myArray = [];
+        let myArray = [["",""]];
         addUserName(ContactList.push(<ContactCard key={ContactList.length} name={newUserName.current.value} lastMessages={myArray} time="" />));
         newUserName.current.value='';
     } 
@@ -49,7 +50,7 @@ function ChatPage() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-4" >
+                <div className="col-4 overflow-scroll" >
                     {ContactList}
                 </div>
                 <div className="col" id="currentChat"></div>
