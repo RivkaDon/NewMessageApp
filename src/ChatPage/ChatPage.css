@@ -1,34 +1,58 @@
+
+#sent{
+  float:right;
+}
+#recieved{
+  float:left;
+}
+.overflow-scroll{
+  width: 440px;
+  height: 500px;
+}
 #currentChat{
-    height: 100%;
-    
+    height: 100%;    
 }
 .bi{
-    padding: 7pt;
     font-size: xx-large;
+  }
+  .bi-paperclip{
+    font-size: large;
+  }
+  #chatBox{
+    padding: 0%;
+    margin: 0%;
+    height: 90%;
+    width: 100%;
+    position:relative;
   }
   #background{
     padding: 0%;
     margin: 0%;
-    height:100%;
+    height:90%;
     width: 65%;
     background-image: url(./chatWallpaper2.jpg);
     position:absolute;
   }
-  #bottomChat{
-    margin: 0%;
-    width: 100%;
+  .myButton{
     position:absolute;
-    bottom: 15%;
+  }
+  .bottomChat{
+    margin: 0%;
+    padding: 0%;
+    width: 86%;
+    position:absolute;
+    left: 6%;
+  }
+  #sendButton{
+    right: 0%;
+  }
+  #attachButton{
+    left: 0%;
   }
   #topStrip{
-    padding: 0%;
-    margin: 0%;
-    background-position: center center;
     background-color: palevioletred;
-    width: 100%;
-    display: block;
   }
   #addButton{
-    float: right;
     font-size: x-large;
+    float: right;
   }
