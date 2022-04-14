@@ -1,0 +1,30 @@
+  #sent{
+    text-align-last: right;
+  }
+  #recieved{
+    text-align-last: left;
+  }
+  #dropdownMenuButton1{
+    left: 0.5%;
+    position: absolute;
+  }
+  .badge{
+    font-size: large;
+    margin: 0.5%;
+  }
+  #picSent{
+    width: 180px;
+    height: 200px;
+    position: relative;
+    margin-left: 100%;
+    float: right;
+    text-align-last: right;
+    margin-bottom: 0.5%;
+  }
+  #picRecieved{
+    width: 180px;
+    height: 200px;
+    margin-right: auto;
+    margin-bottom: 0.5%;
+  }
+  
