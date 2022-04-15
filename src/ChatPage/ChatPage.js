@@ -1,13 +1,16 @@
 import './ChatPage.css'
 import './Contacts/ContactCard.css';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import ContactCard from './Contacts/ContactCard';
 import React from 'react';
 import OpenChat from './Chats/ChatCard';
 import contacts from './Contacts/Contacts';
 function ChatPage() {
+    //const [, updateState] = useState(0);
+    //const forceUpdate = useCallback(() => updateState({}), []);
+    //console.log("render");
     // hook for rerendering the page 
-    const [reRender, setReRender] = useState();
+    const [reRender, setReRender] = useState(0);
     // hook for passing and updating contact messages
     const [getMessages, setMessages] = useState();
     // hook for passing name of contact whom we clicked on their contact card

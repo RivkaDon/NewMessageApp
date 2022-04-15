@@ -1,15 +1,17 @@
 import { useRef, useState } from "react";
 
-function AttachImage(messageGetter, setReRender, loadMessages) {
+function AttachImage(messageGetter, setReRender, loadMessages, setMessage, getMessage) {
     const newImage = useRef();
     const [img, setImg] = useState();
     const onImageChange = () => {
         const [file] = newImage.current.files;
         if (file) {
-            messageGetter.messageGetter.push([1, file.name, 'now', 'pic']);
+            messageGetter.messageGetter.push([1, file.name, new Date(), 'pic']);
             setImg(URL.createObjectURL(file));
-            messageGetter.setReRender(messageGetter.messageGetter[messageGetter.messageGetter.length - 1][1]);
+            messageGetter.setReRender(messageGetter.messageGetter[messageGetter.messageGetter.length - 1][2]);
             newImage.current.value = null;
+            // in order to rerender the chat page and show duplicate messeges
+            messageGetter.setMessage(messageGetter.getMessage+1);
         }
     };
     return (
