@@ -16,7 +16,7 @@ function ContactCard({ name, img, lastMessages, time, setter, messagesSetter, re
             <div className="fw-bold">{name}</div>
             <div>{lastMessages[lastMessages.length-1][1]}</div>
           </div>
-          <div className="position-absolute bottom-0 end-0" id='time'>{time}</div>
+          <div className="position-absolute bottom-0 end-0" id='time'>{lastMessages[lastMessages.length-1][2]}</div>
         </li>
       </ol>
     </div>

@@ -48,7 +48,7 @@ function AttachRecording(messageGetter, setReRender, loadMessages, setMessage, g
       const [recording, setRecording] = useState();
       const onRecordingChange = () => {
         if (audioURL) {
-            messageGetter.messageGetter.push([1, audioURL, new Date(), 'recording']);
+            messageGetter.messageGetter.push([1, audioURL, (new Date()).toLocaleString(), 'recording']);
             setRecording(audioURL);
             messageGetter.setReRender(messageGetter.messageGetter[messageGetter.messageGetter.length - 1][2]);
             audioURL = null;
@@ -58,12 +58,12 @@ function AttachRecording(messageGetter, setReRender, loadMessages, setMessage, g
     };
       let [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
     return (
-        <div class="modal fade" id="recordModal" tabindex="-1" aria-labelledby="recordModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Record:</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal fade" id="recordModal" tabIndex="-1" aria-labelledby="recordModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">Record:</h5>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div>
                         <audio src={audioURL} controls />
@@ -74,9 +74,9 @@ function AttachRecording(messageGetter, setReRender, loadMessages, setMessage, g
                             end
                         </button>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onClick={onRecordingChange}>Send</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={onRecordingChange}>Send</button>
                     </div>
                 </div>
             </div>

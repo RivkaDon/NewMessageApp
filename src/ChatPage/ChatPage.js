@@ -6,9 +6,6 @@ import React from 'react';
 import OpenChat from './Chats/ChatCard';
 import contacts from './Contacts/Contacts';
 function ChatPage() {
-    //const [, updateState] = useState(0);
-    //const forceUpdate = useCallback(() => updateState({}), []);
-    //console.log("render");
     // hook for rerendering the page 
     const [reRender, setReRender] = useState(0);
     // hook for passing and updating contact messages
@@ -65,7 +62,7 @@ function ChatPage() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-4 overflow-scroll" >
+                <div className="col-4 overflow-auto" >
                     {NewContactList.map((contact, key) => <ContactCard key={key} name={contact.name} img={contact.img} lastMessages={contact.lastMessage} time={contact.time} setter={setChat} messagesSetter={setMessages} />)}
                 </div>
 

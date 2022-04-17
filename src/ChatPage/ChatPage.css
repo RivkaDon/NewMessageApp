@@ -1,5 +1,5 @@
-.overflow-scroll{
-  width: 440px;
+.overflow-auto{
+  width: 34%;
   height: 500px;
 }
 #currentChat{
@@ -18,15 +18,7 @@
     width: 100%;
     position:relative;
   }
-  #background{
-    top:12%;
-    padding: 0%;
-    margin: 0%;
-    height:90%;
-    width: 65%;
-    background-image: url(./chatWallpaper2.jpg);
-    position:absolute;
-  }
+  
   .myButton{
     position:absolute;
   }
@@ -42,6 +34,7 @@
   }
   #topStrip{
     background-color: palevioletred;
+    justify-items: center;
   }
   #addButton{
     font-size: x-large;
