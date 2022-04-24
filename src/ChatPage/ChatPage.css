@@ -1,12 +1,5 @@
-
-#sent{
-  float:right;
-}
-#recieved{
-  float:left;
-}
-.overflow-scroll{
-  width: 440px;
+.overflow-auto{
+  width: 34%;
   height: 500px;
 }
 #currentChat{
@@ -25,14 +18,7 @@
     width: 100%;
     position:relative;
   }
-  #background{
-    padding: 0%;
-    margin: 0%;
-    height:90%;
-    width: 65%;
-    background-image: url(./chatWallpaper2.jpg);
-    position:absolute;
-  }
+  
   .myButton{
     position:absolute;
   }
@@ -41,18 +27,26 @@
     padding: 0%;
     width: 86%;
     position:absolute;
-    left: 6%;
-  }
-  #sendButton{
-    right: 0%;
+    left: 6.5%;
   }
   #attachButton{
     left: 0%;
   }
   #topStrip{
     background-color: palevioletred;
+    justify-items: center;
   }
   #addButton{
     font-size: x-large;
     float: right;
+  }
+  .attach{
+    font-size: x-large;
+  }
+  #sendButton{
+    right: 0%;
+  }
+  #dropdownMenuButton1{
+    left: 0.5%;
+    position: absolute;
   }

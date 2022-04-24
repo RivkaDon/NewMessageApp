@@ -1,58 +1,107 @@
-import ContactList from "../Contacts/ContactList";
-import HarryPmesseges from "../Messages/HarryPmessages";
-import React from 'react';
+import React, { useEffect } from 'react';
+import AttachImage from './ImageAttachment';
 import { useRef, useState } from "react";
+import './ChatCard.css'
+import AttachVideo from './VideoAttachment';
+import AttachSound from './SoundAttachment';
+import AttachRecording from './RecordAttachment';
 
-function OpenChat({ name, lastMessages }) {
-    const sendMessage = function(){
-        const lineBreak = document.createElement('br');
-        const myLastMessage = document.createElement('div');
-        myLastMessage.setAttribute("id", "sent");
-        myLastMessage.append(document.getElementById("bottomChat").value);
-        document.getElementById("chatBox").append(myLastMessage);
-        document.getElementById("chatBox").append(lineBreak);
-        lastMessages.push([1,document.getElementById("bottomChat").value]);
-        document.getElementById("bottomChat").value='';
-    }
-    document.getElementById("nameOfChatContact").innerHTML = name;
-    document.getElementById("currentChat").innerHTML
-        = ('<div class="chatElement" id="background"><div class="overflow-auto chatElement" id="chatBox"></div>'+
-            '<button class="bottomChat" id="attachButton"></button><input id="bottomChat" class="bottomChat"></input>'
-            + '<button class="bottomChat dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="sendButton"></button></div>');
-    //load all previous messeges
-    const lineBreak = document.createElement('br');
-    lastMessages.forEach(element =>{ const singleMessage = document.createElement('div');
-    if (element[0]){
-        singleMessage.setAttribute("id", "sent");
-    }
-    else{
-        singleMessage.setAttribute("id", "recieved");
-    }
-    singleMessage.append(element[1]);   
-    document.getElementById("chatBox").append(singleMessage);
-    const lineBreak = document.createElement('br');
-    document.getElementById("chatBox").appendChild(lineBreak);
-    });
-    // attach button
-    const attach = document.createElement("button");
-    attach.addEventListener("click", () => console.log("hello"));
-    attach.setAttribute("id", "attachButton");
-    attach.setAttribute("class", "myButton");
-    attach.setAttributeNS("class", "myButton", "id", "attachButton", "type", "button", "className", "btn btn-primary");
-    document.getElementById("attachButton").replaceWith(attach);
-    attach.innerHTML = '<i class="bi bi-paperclip"></i>';
-    // input
-    const input = document.createElement("input");
-    input.setAttribute("id", "bottomChat");
-    input.type = "text";  
-    input.className = "css-class-name"; 
-    // send button
-    const send = document.createElement("button");
-    send.addEventListener("click", sendMessage);
-    send.innerText = "Send";
-    send.setAttribute("id", "sendButton");
-    send.setAttribute("class", "myButton");
-    send.setAttributeNS("class", "myButton", "id", "sendButton", "type", "button", "className", "btn btn-primary");
-    document.getElementById("sendButton").replaceWith(send);
+function OpenChat({ getter, messageGetter, messageSetter, contactSetter, setReRender}) {
+    // in order to go to bottom of scrollbar after opening each chat so we can see the last messeges in convo
+    const MyComponent = () => {
+        const divRef = useRef(null);
+      
+        useEffect(() => {
+          divRef.current.scrollIntoView({ behavior: 'smooth' });
+        });
+      
+        return <div ref={divRef} />;
+      }
+    const [getMessage, setMessage] = useState(0);
+    const newMessage = useRef();
+    const showNewMessage = () => {
+        messageGetter.push([1, newMessage.current.value, (new Date()).toLocaleString(), 'text']);
+        setMessage(getMessage+1);
+        newMessage.current.value = "";
+        setReRender(messageGetter[messageGetter.length-1][2]);
+    };
+    const messageArr = messageGetter;
+    const loadMessages = function () {
+        if (messageArr) {
+            return (messageArr.map((element,key) => {
+                switch (element[0]) {
+                    case 1:
+                        if (element[3] == 'text') {
+                            return <div key={element} className="sent"><span className="badge bg-secondary">{element[1]}<br></br><div className="dateAndTime">{element[2]}</div></span>
+                            </div>;
+                        }
+                        else if (element[3] == 'vid') {
+                            return <div key={element} className="sent"><span className="badge bg-secondary"><video width="320" height="240" muted controls playsInline>
+                                <source src={element[1]} type="video/mp4"></source>
+                            </video><br></br><div className="dateAndTime">{element[2]}</div></span></div>;
+                        }
+                        else if (element[3] == 'sound') {
+                            return <div key={element} className="sent"><span className="badge bg-secondary"><audio controls>
+                                <source src={element[1]} type="audio/mpeg"></source>
+                            </audio><br></br><div className="dateAndTime">{element[2]}</div></span></div>;
+                        }
+                        else if (element[3] == 'recording') {
+                            return <div key={element} className="sent"><span className="badge bg-secondary"><audio controls>
+                                <source src={element[1]} type="audio/mpeg"></source>
+                            </audio><br></br><div className="dateAndTime">{element[2]}</div></span></div>;
+                        }
+                        return <div key={element} className="sent"><div className="badge bg-secondary "><img id="picSent" src={element[1]} alt="" />
+                        <div className="dateAndTime">{element[2]}</div></div></div>;
+                    case 0:
+                        if (element[3] == 'text') {
+                            return <div key={element} className="recieved"><span className="badge bg-secondary">{element[1]}<br></br><div className="dateAndTime">{element[2]}</div></span>
+                            </div>;
+                        }
+                        else if (element[3] == 'vid') {
+                            return <div key={element} className="recieved"><span className="badge bg-secondary"><video width="320" height="240" muted controls playsInline>
+                                <source src={element[1]} type="video/mp4"></source>
+                            </video><br></br><div className="dateAndTime">{element[2]}</div></span></div>;
+                        }
+                        else if (element[3] == 'sound') {
+                            return <div key={element} className="recieved"><span className="badge bg-secondary"><audio controls>
+                                <source src={element[1]} type="audio/mpeg"></source>
+                            </audio><br></br><div className="dateAndTime">{element[2]}</div></span></div>;
+                        }
+                        else if (element[3] == 'recording') {
+                            return <div key={element} className="recieved"><span className="badge bg-secondary"><audio controls>
+                                <source src={element[1]} type="audio/mpeg"></source>
+                            </audio><br></br><div className="dateAndTime">{element[2]}</div></span></div>;
+                        }
+                        return <div key={element} className="recieved"><div className="badge bg-secondary "><img id="picSent" src={element[1]} alt="" />
+                        <div className="dateAndTime">{element[2]}</div></div></div>;
+                    default:
+                        return;
+                }
+            }));
+        }
+    };
+    return (
+        <div><span id = "chatNickName">{getter}</span><div className="chatElement" id="background">
+            <AttachImage messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>
+            <AttachVideo messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>
+            <AttachSound messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>
+            <AttachRecording messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>
+            <div className="overflow-auto chatElement" id="chatBox">{loadMessages()}{MyComponent()}</div>
+            <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i className="bi bi-paperclip"></i>
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#picModal"><i className="bi bi-camera attach"></i> Image
+                    </a></li>
+                    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#vidModal"><i className="bi bi-camera-reels attach"></i> Video</a></li>
+                    <li><a className="dropdown-item" data-bs-toggle="modal" data-bs-target="#recordModal"><i className="bi bi-mic attach"></i> Record</a></li>
+                    <li><a className="dropdown-item"  data-bs-toggle="modal" data-bs-target="#soundModal"><i className="bi bi-file-earmark-music attach"></i> Sound</a></li>
+                </ul>
+            </div><input type="text" ref={newMessage} className="form-control bottomChat" placeholder="New Message" aria-label="Username" ></input>
+            <button type="button" className="btn btn-secondary myButton" id="sendButton" onClick={showNewMessage}>Send</button>
+        </div>
+        </div>
+    )
 }
 export default OpenChat;

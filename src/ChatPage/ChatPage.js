@@ -1,20 +1,30 @@
 import './ChatPage.css'
 import './Contacts/ContactCard.css';
-import ContactList from './Contacts/ContactList';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import ContactCard from './Contacts/ContactCard';
 import React from 'react';
+import OpenChat from './Chats/ChatCard';
+import contacts from './Contacts/Contacts';
 function ChatPage() {
+    // hook for rerendering the page 
+    const [reRender, setReRender] = useState(0);
+    // hook for passing and updating contact messages
+    const [getMessages, setMessages] = useState();
+    // hook for passing name of contact whom we clicked on their contact card
+    const [getChat, setChat] = useState();
     // hook for reloading all the contacts after adding a contact
-    const [NewContactList, addUserName] = useState(ContactList);
+    const [NewContactList, addUserName] = useState(contacts);
     // hook for storing the newly entered username 
-    const newUserName = useRef(null);
+    const newUserName = useRef();
     // function to push a new contact into the contact list
     const SubmitNewContact = function () {
-        let myArray = [["",""]];
-        addUserName(ContactList.push(<ContactCard key={ContactList.length} name={newUserName.current.value} lastMessages={myArray} time="" />));
-        newUserName.current.value='';
-    } 
+        let myArray = [["", ""]];
+        let name = newUserName.current.value;
+        addUserName((prev) => {
+            return prev.concat({ img: null, name: name, lastMessage: myArray, time: "" });
+        });
+        newUserName.current.value = '';
+    }
     return (
         <div className="App container">
             <div className="container" id="topStrip">
@@ -27,7 +37,9 @@ function ChatPage() {
                             <i className="bi bi-person-plus"></i>
                         </button>
                     </div>
-                    <div className="col-4" id="nameOfChatContact"></div>
+                    <div className="col-4" id="currentChat">
+                        <OpenChat getter={getChat} messageGetter={getMessages} messageSetter={setMessages} contactSetter={addUserName} setReRender={setReRender} />
+                    </div>
                 </div>
             </div>
             <div>
@@ -50,10 +62,10 @@ function ChatPage() {
                 </div>
             </div>
             <div className="row">
-                <div className="col-4 overflow-scroll" >
-                    {ContactList}
+                <div className="col-4 overflow-auto" >
+                    {NewContactList.map((contact, key) => <ContactCard key={key} name={contact.name} img={contact.img} lastMessages={contact.lastMessage} time={contact.time} setter={setChat} messagesSetter={setMessages} />)}
                 </div>
-                <div className="col" id="currentChat"></div>
+
             </div>
         </div>
     );
