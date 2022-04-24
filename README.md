@@ -3,7 +3,14 @@
 # Packages used in project:
 
 *react-bootstrap
+
 *react-router-dom
+
+# How to run our code:
+
+Start by cloning our project. Then make sure you use npm install.
+Next in the cmd run our code by running npm start command.
+Enjoy:)
 
 # Getting Started with Create React App
 
