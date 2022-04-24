@@ -8,8 +8,8 @@
 
 # How to run our code:
 
-Start by cloning our project. Then make sure you use npm install.
-Next in the cmd run our code by running npm start command.
+Start by cloning our project. Then make sure you use npm install command.
+Next, in cmd run our code by running npm start command in the cloned project path.
 Enjoy:)
 
 # Getting Started with Create React App
