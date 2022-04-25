@@ -1,2 +1,0 @@
-const DonaldTmesseges = [[1,'Make America Great Again!', '4/17/2022, 4:20:56 PM', 'text'],[0,'how are you?', '4/17/2022, 4:22:56 PM', 'text'],[0,'happy-birthday-to-you-traditional-song.mp3', '4/17/2022, 4:23:56 PM', 'sound']];
-export default DonaldTmesseges;

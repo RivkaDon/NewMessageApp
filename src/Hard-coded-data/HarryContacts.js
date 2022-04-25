@@ -1,9 +1,9 @@
 
 import QueenElisabethPic from './queenElisabeth.jpg'
 import DonaldTrumpPic from './donaldTrump.jpg'
-import QueenEmessages from './Messages/QueenEmessages'
-import DonaldTmessages from './Messages/DonaldTmessages'
+import HarryDonaldmessages from './Messages/HarryDonaldMessages'
+import HarryElisabeth from './Messages/HarryElisabeth'
 
-const HarryContacts = [{img: QueenElisabethPic, name: 'Queen Elisabeth', lastMessage: QueenEmessages},
-{img: DonaldTrumpPic, name: 'Donald Trump', lastMessage: DonaldTmessages}]
+const HarryContacts = [{img: QueenElisabethPic, name: 'Queen Elisabeth', lastMessage: HarryElisabeth},
+{img: DonaldTrumpPic, name: 'Donald Trump', lastMessage: HarryDonaldmessages}]
 export default HarryContacts;
