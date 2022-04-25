@@ -4,8 +4,21 @@ import { useCallback, useRef, useState } from 'react';
 import ContactCard from './Contacts/ContactCard';
 import React from 'react';
 import OpenChat from './Chats/ChatCard';
-import contacts from './Contacts/Contacts';
-function ChatPage() {
+import { useLocation } from 'react-router-dom';
+import usersList from '../signIn/usersList';
+function ChatPage({}) {
+    const location = useLocation();
+    var currentUser = location.state;
+    const getUsernameReturnContacts = function(userName){
+        var temp = [];
+        usersList.forEach(element => { if(element.username == userName) {temp = element.contacts; return;}}) 
+        return temp;   
+    }
+    const getUsernameReturnImg = function(userName){
+        var temp;
+        usersList.forEach(element => { if(element.username == userName) {temp = element.picture; return;}}) 
+        return temp;   
+    }
     // hook for rerendering the page 
     const [reRender, setReRender] = useState(0);
     // hook for passing and updating contact messages
@@ -13,26 +26,40 @@ function ChatPage() {
     // hook for passing name of contact whom we clicked on their contact card
     const [getChat, setChat] = useState();
     // hook for reloading all the contacts after adding a contact
-    const [NewContactList, addUserName] = useState(contacts);
+    const [NewContactList, addUserName] = useState(getUsernameReturnContacts(currentUser));
     // hook for storing the newly entered username 
     const newUserName = useRef();
     // function to push a new contact into the contact list
+    const isUser = function (name) {
+        return usersList.some(code => { return (code.username === name); });
+    }
     const SubmitNewContact = function () {
         let myArray = [["", ""]];
         let name = newUserName.current.value;
-        addUserName((prev) => {
-            return prev.concat({ img: null, name: name, lastMessage: myArray, time: "" });
-        });
+        if (isUser(name)) {
+            addUserName((prev) => {
+                return prev.concat({ img: getUsernameReturnImg(name), name: getUsernameReturnNickName(name), lastMessage: myArray, time: "" });
+            });
+        }
+        else {
+            alert("username not found");
+        }
         newUserName.current.value = '';
     }
+    const getUsernameReturnNickName = function(userName){
+        var temp = '';
+        usersList.forEach(element => { if(element.username == userName) {temp = element.nickName; return;}}) 
+        return temp;   
+    }
+    
     return (
         <div className="App container">
             <div className="container" id="topStrip">
                 <div className="row">
                     <div className="col-4">
-                        <button type="button" className="btn">
+                        <div type="button" className="btn">
                             <i className="bi bi-envelope-paper-heart-fill"></i>
-                        </button>Rivka Doniger
+                        </div>{getUsernameReturnNickName(currentUser)}
                         <button type="button" id='addButton' className="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i className="bi bi-person-plus"></i>
                         </button>

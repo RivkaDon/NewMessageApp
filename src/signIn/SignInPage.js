@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import usersList from './usersList';
 import './RegisterPage.css'
 
-
 import {
     BrowserRouter as Router,
     Link,
@@ -11,7 +10,7 @@ import {
     Route
 } from "react-router-dom";
 
-
+var userNameInput = "";
 function SignPage2() {
     const [isCorrect, setIsCorrect] = useState(false);
     function CheckInput(event) {
@@ -21,7 +20,7 @@ function SignPage2() {
         const userName = document.getElementById('userName');
         const password = document.getElementById('password');
 
-        const userNameInput = userName.value.trim();
+        userNameInput = userName.value.trim();
         const passwordInput = password.value.trim();
 
         if (userNameInput === '') {
@@ -66,7 +65,7 @@ function SignPage2() {
     return (
         <div id='containerAll'>
             {(isCorrect) ?
-                (<Navigate to="/chat" />) :
+                (<Navigate to="/chat" state={userNameInput} />) :
                 (
                     <div className="container" id='container'>
                         <div className="header">

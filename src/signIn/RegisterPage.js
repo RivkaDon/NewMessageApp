@@ -81,7 +81,7 @@ function BasePage() {
             if(!document.getElementById('image_input')) {
                 imageSource = "/profilePic.jpg";
             }
-            usersList.push({ username: userNameInput, password: passwordInput, nickName: nickNameInput, picture: imageSource });
+            usersList.push({ username: userNameInput, password: passwordInput, nickName: nickNameInput, picture: imageSource, contacts: [] });
             setIsCorrect(true);
         }
     }
@@ -124,7 +124,7 @@ function BasePage() {
     return (
         <div id='containerAll'>
             {(isCorrect) ?
-                (<Navigate to="/" />) :
+                (<Navigate to="/"/>) :
                 (
                     <div className="container" id='container'>
                         <div className="header">
