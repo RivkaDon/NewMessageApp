@@ -40,8 +40,8 @@ function SignPage2() {
             formControl.className = 'form-control design';
         }
         if (userNameInput !== '' && passwordInput !== '' && !isUser(userNameInput, passwordInput)) {
-            setErrorFor(userName, 'User doesnot exist')
-            setErrorFor(password, 'User doesnot exist');
+            setErrorFor(userName, 'User does not exist')
+            setErrorFor(password, 'User does not exist');
             flag = false;
         }
         if (flag === true) {
