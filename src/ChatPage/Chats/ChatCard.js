@@ -6,7 +6,7 @@ import AttachVideo from './VideoAttachment';
 import AttachSound from './SoundAttachment';
 import AttachRecording from './RecordAttachment';
 
-function OpenChat({ getter, messageGetter, messageSetter, contactSetter, setReRender}) {
+function OpenChat({ getter, messageGetter, messageSetter, contactSetter, setReRender, imageGetter}) {
     // in order to go to bottom of scrollbar after opening each chat so we can see the last messeges in convo
     const MyComponent = () => {
         const divRef = useRef(null);
@@ -81,7 +81,7 @@ function OpenChat({ getter, messageGetter, messageSetter, contactSetter, setReRe
         }
     };
     return (
-        <div><span id = "chatNickName">{getter}</span><div className="chatElement" id="background">
+        <div><span id = "chatNickName"><img id="contactImage" src={imageGetter}></img>{getter}</span><div className="chatElement" id="background">
             <AttachImage messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>
             <AttachVideo messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>
             <AttachSound messageGetter={messageGetter} setReRender={setReRender} loadMessages={loadMessages} setMessage={setMessage} getMessage={getMessage}/>

@@ -5,8 +5,8 @@ import { useRef, useState } from "react";
 import React from 'react';
 
 
-function ContactCard({ name, img, lastMessages, time, setter, messagesSetter, reRender }) {
-  const setChat = ()=>{setter(name);messagesSetter(lastMessages)};
+function ContactCard({ name, img, lastMessages, time, setter, messagesSetter, imageSetter, flagSetter}) {
+  const setChat = ()=>{setter(name);messagesSetter(lastMessages); imageSetter(img); flagSetter(true)};
   return (
     <div className="container" onClick={setChat}>
       <ol className="list-group">

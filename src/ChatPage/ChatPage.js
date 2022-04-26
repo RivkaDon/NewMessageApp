@@ -7,6 +7,7 @@ import OpenChat from './Chats/ChatCard';
 import { useLocation } from 'react-router-dom';
 import usersList from '../signIn/usersList';
 function ChatPage({}) {
+    
     const location = useLocation();
     var currentUser = location.state;
     const getUsernameReturnContacts = function(userName){
@@ -19,6 +20,8 @@ function ChatPage({}) {
         usersList.forEach(element => { if(element.username == userName) {temp = element.picture; return;}}) 
         return temp;   
     }
+    const [getFlag, setFlag] = useState(false);
+    const [getContactImage, setContactImage] = useState();
     // hook for rerendering the page 
     const [reRender, setReRender] = useState(0);
     // hook for passing and updating contact messages
@@ -46,6 +49,13 @@ function ChatPage({}) {
         }
         newUserName.current.value = '';
     }
+    const OnClickChat = function () {
+        if(getFlag == true)
+        {
+            
+            return <OpenChat getter={getChat} messageGetter={getMessages} messageSetter={setMessages} contactSetter={addUserName} setReRender={setReRender} imageGetter={getContactImage} />
+        }
+    }
     const getUsernameReturnNickName = function(userName){
         var temp = '';
         usersList.forEach(element => { if(element.username == userName) {temp = element.nickName; return;}}) 
@@ -65,7 +75,7 @@ function ChatPage({}) {
                         </button>
                     </div>
                     <div className="col-4" id="currentChat">
-                        <OpenChat getter={getChat} messageGetter={getMessages} messageSetter={setMessages} contactSetter={addUserName} setReRender={setReRender} />
+                    <OnClickChat />
                     </div>
                 </div>
             </div>
@@ -90,7 +100,7 @@ function ChatPage({}) {
             </div>
             <div className="row">
                 <div className="col-4 overflow-auto" >
-                    {NewContactList.map((contact, key) => <ContactCard key={key} name={contact.name} img={contact.img} lastMessages={contact.lastMessage} time={contact.time} setter={setChat} messagesSetter={setMessages} />)}
+                    {NewContactList.map((contact, key) => <ContactCard key={key} name={contact.name} img={contact.img} lastMessages={contact.lastMessage} time={contact.time} setter={setChat} messagesSetter={setMessages} imageSetter={setContactImage} flagSetter={setFlag} />)}
                 </div>
 
             </div>
