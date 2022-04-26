@@ -10,6 +10,7 @@ import {
     Route
 } from "react-router-dom";
 
+var userNameInput = "";
 
 function BasePage() {
 
@@ -27,7 +28,7 @@ function BasePage() {
 
 
 
-        const userNameInput = userName.value.trim();
+        userNameInput = userName.value.trim();
         const nickNameInput = nickName.value.trim();
         const passwordInput = password.value.trim();
         const confirmPasswordInput = confirmPassword.value.trim();
@@ -124,7 +125,7 @@ function BasePage() {
     return (
         <div id='containerAll'>
             {(isCorrect) ?
-                (<Navigate to="/"/>) :
+                (<Navigate to="/chat" state={userNameInput} />) :
                 (
                     <div className="container" id='container'>
                         <div className="header">
