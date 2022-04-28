@@ -25,7 +25,13 @@ To add a new contact, click on the add icon on the top left side and enter the p
 Using our app you can send regular text messeges using the input bar and clicking "Send" or click on the paperclip icon to send an image, video, sound file or record a voice note. 
 Enjoy:)
 
+# Hard-Coded usernames and their passwords:
 
+username: 'harry', password: '1a'
+username: 'queen', password: '1b'
+username: 'donald', password: '1c'
+username: 'snow', password: '1d'
+username: 'olof', password: '1e'
 
 
 
