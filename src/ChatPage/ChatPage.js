@@ -1,12 +1,28 @@
 import './ChatPage.css'
 import './Contacts/ContactCard.css';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import ContactCard from './Contacts/ContactCard';
 import React from 'react';
 import OpenChat from './Chats/ChatCard';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useResolvedPath } from 'react-router-dom';
 import usersList from '../signIn/usersList';
+
 function ChatPage({}) {
+    
+    const [list, setList] = useState([]);
+    useEffect(()=>{
+        var j = new Array();
+        const func = async()=> {
+        await fetch('https://localhost:7104/api/Contacts', {method:'GET'}).then(response => response.json())
+        .then(data => j = data);
+        let myMap;
+        j.forEach(element => {
+            myMap = new Map(Object.entries(element));
+            setList(prev=> prev.concat(myMap));
+        });
+    }
+        func()
+    }, []);
     
     const location = useLocation();
     var currentUser = location.state;
@@ -49,7 +65,9 @@ function ChatPage({}) {
         }
         newUserName.current.value = '';
     }
+    
     const OnClickChat = function () {
+    
         if(getFlag == true)
         {
             
@@ -76,12 +94,14 @@ function ChatPage({}) {
                     </div>
                     <div className="col-4" id="currentChat">
                     <OnClickChat />
+                    
+                   
                     </div>
                 </div>
             </div>
             <div>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="modal-dialog">
+                <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title" id="exampleModalLabel">Add new contact</h5>
@@ -100,7 +120,7 @@ function ChatPage({}) {
             </div>
             <div className="row">
                 <div className="col-4 overflow-auto" >
-                    {NewContactList.map((contact, key) => <ContactCard key={key} name={contact.name} img={contact.img} lastMessages={contact.lastMessage} time={contact.time} setter={setChat} messagesSetter={setMessages} imageSetter={setContactImage} flagSetter={setFlag} />)}
+                {list.map((contact) => <ContactCard name={contact.get("name")} lastMessages={contact.get("last")} setter={setChat} messagesSetter={setMessages} flagSetter={setFlag} />)}
                 </div>
 
             </div>

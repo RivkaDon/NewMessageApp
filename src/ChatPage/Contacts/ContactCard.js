@@ -5,18 +5,18 @@ import { useRef, useState } from "react";
 import React from 'react';
 
 
-function ContactCard({ name, img, lastMessages, time, setter, messagesSetter, imageSetter, flagSetter}) {
-  const setChat = ()=>{setter(name);messagesSetter(lastMessages); imageSetter(img); flagSetter(true)};
+function ContactCard({ name, lastMessages, setter, messagesSetter, flagSetter}) {
+  const setChat = ()=>{setter(name);messagesSetter(lastMessages); flagSetter(true)};
   return (
     <div className="container" onClick={setChat}>
       <ol className="list-group">
         <li className="list-group-item d-flex justify-content-between align-items-start">  
-        <img src={img}></img>
+        <img></img>
           <div className="ms-2 me-auto">
             <div className="fw-bold">{name}</div>
-            <div>{lastMessages[lastMessages.length-1][1]}</div>
+            <div>{lastMessages}</div>
           </div>
-          <div className="position-absolute bottom-0 end-0" id='time'>{lastMessages[lastMessages.length-1][2]}</div>
+          <div className="position-absolute bottom-0 end-0" id='time'>{lastMessages}</div>
         </li>
       </ol>
     </div>
